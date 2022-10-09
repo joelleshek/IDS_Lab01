@@ -57,6 +57,12 @@ ggplot(data = plastic_waste,
                      colour = continent,
                      fill = continent)) +
   geom_density(alpha =0.3)
+
+#And yet another way to visualize this relationship is using side-by-side box plots.
+ggplot(data = plastic_waste,
+       mapping = aes(x = continent,
+                     y = plastic_waste_per_cap)) +
+  geom_boxplot()
 ```
 
 ### Exercise 4
@@ -64,7 +70,10 @@ ggplot(data = plastic_waste,
 *Remove this text, and add your answer for Exercise 4 here.*
 
 ```{r plastic-waste-violin}
-# remove this comment and add the code for Exercise 4 here
+ggplot(plastic_waste,
+       aes(x = continent,
+           y = plastic_waste_per_cap)) +
+  geom_violin()
 ```
 
 ### Exercise 5
@@ -72,7 +81,13 @@ ggplot(data = plastic_waste,
 *Remove this text, and add your answer for Exercise 5 here.*
 
 ```{r plastic-waste-mismanaged}
-# remove this comment and add the code for Exercise 5 here
+ggplot(plastic_waste,
+       aes (x = mismanaged_plastic_waste_per_cap,
+            y = plastic_waste_per_cap)) +
+  geom_point() +
+  labs(title = "Relationship between PLastic Waste and Mismanaged Plastic Waste",
+       x = "Mismanaged Plastic Waste per Capita",
+       y = "Plastic Waste per Capita")
 ```
 
 ### Exercise 6
@@ -80,7 +95,14 @@ ggplot(data = plastic_waste,
 *Remove this text, and add your answer for Exercise 6 here.*
 
 ```{r plastic-waste-mismanaged-continent}
-# remove this comment and add the code for Exercise 6 here
+ggplot(plastic_waste,
+       aes (x = mismanaged_plastic_waste_per_cap,
+            y = plastic_waste_per_cap,
+            colour = continent)) +
+  geom_point() +
+  labs(title = "Relationship between PLastic Waste and Mismanaged Plastic Waste",
+       x = "Mismanaged Plastic Waste per Capita",
+       y = "Plastic Waste per Capita")
 ```
 
 ### Exercise 7
@@ -88,11 +110,25 @@ ggplot(data = plastic_waste,
 *Remove this text, and add your answer for Exercise 7 here.*
 
 ```{r plastic-waste-population-total}
-# remove this comment and add the code for the first plot for Exercise 7 here
+ggplot(plastic_waste,
+       aes(x = total_pop,
+           y = plastic_waste_per_cap,
+           colour = continent)) +
+  geom_point() + 
+  labs(title = "Relationship between plastic waste and total population",
+       x = "Total population",
+       y = "Plastic Waste per Capita")
 ```
 
 ```{r plastic-waste-population-coastal}
-# remove this comment and add the code for the second plot for Exercise 7 here
+ggplot(plastic_waste,
+       aes(x = coastal_pop,
+           y = plastic_waste_per_cap,
+           colour = continent)) +
+  geom_point() + 
+  labs(title = "Relationship between plastic waste and coastal population",
+       x = "Coastal population",
+       y = "Plastic Waste per Capita")
 ```
 
 ### Exercise 8
