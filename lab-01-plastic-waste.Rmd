@@ -17,23 +17,47 @@ library(tidyverse)
 plastic_waste <- read_csv("data/plastic-waste.csv")
 ```
 
+
 ### Exercise 1
 
 *Remove this text, and add your answer for Exercise 1 here.*
 
 ```{r plastic-waste-continent}
-# remove this comment and add the code for Exercise 1 here
+ggplot(data = plastic_waste, aes(x = plastic_waste_per_cap)) +
+  geom_histogram(binwidth = 0.2)
 ```
 
 ### Exercise 2
 
 ```{r plastic-waste-density}
-# remove this comment and add the code for Exercise 2 here
+plastic_waste %>%
+  filter(plastic_waste_per_cap > 3.5)
+
+# Exercise 3
+
+ggplot(data=plastic_waste, aes(x=plastic_waste_per_cap)) +
+  geom_density()
+
+# Exercise 4 - And compare distributions across continents by coloring density curves by continent.
+ggplot(data = plastic_waste,
+       mapping = aes(x = plastic_waste_per_cap,
+                     colour = continent)) +
+  geom_density()
+
+# The resulting plot may be a little difficult to read, so let’s also fill the curves in with colors as well.
+ggplot(data = plastic_waste,
+       mapping = aes(x = plastic_waste_per_cap,
+                     colour = continent,
+                     fill = continent)) + 
+  geom_density()
+
+#The overlapping colors make it difficult to tell what is happening with the distributions in continents plotted first, and hence coverred by continents plotted over them. We can change the transparency level of the fill color to help with this. The alpha argument takes values between 0 and 1: the value 0 is completely transparent and 1 is completely opaque. There is no way to tell what value will work best, so you just need to try a few.
+ggplot(data = plastic_waste,
+       mapping = aes(x = plastic_waste_per_cap,
+                     colour = continent,
+                     fill = continent)) +
+  geom_density(alpha =0.3)
 ```
-
-### Exercise 3
-
-*Remove this text, and add your answer for Exercise 3 here.*
 
 ### Exercise 4
 
